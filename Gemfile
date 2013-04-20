@@ -10,6 +10,7 @@ gem 'devise'
 
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

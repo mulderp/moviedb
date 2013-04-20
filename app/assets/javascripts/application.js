@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require underscore
+//= require backbone
+//= require backbone.marionette
+//= require handlebars.js
+//= require monkeys
+//= require init
 //= require_tree .
