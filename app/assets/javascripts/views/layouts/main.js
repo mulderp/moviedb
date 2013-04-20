@@ -1,7 +1,15 @@
 MA.Views.Layouts.Main = Backbone.Marionette.Layout.extend({
   template: 'layouts/main',
   regions: {
-    content: '#content'
+    main: '#main'
+  },
+
+  views: {},
+
+  onShow: function() {
+    this.views.login = MA.Views.Unauthenticated.Login;
+    this.views.signup = MA.Views.Unauthenticated.Signup;
+    this.main.show(new this.views.login);
   }
 });
 

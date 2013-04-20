@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require backbone.rails.sync
 //= require backbone.marionette
+//= require Backbone.ModelBinder
 //= require handlebars.js
 //= require monkeys
 //= require init
