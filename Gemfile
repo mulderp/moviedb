@@ -12,9 +12,13 @@ group :development do
   gem 'sqlite3'
 end
 
-group :test do
+group :development, :test do
   gem 'rspec-rails'
-  gem 'cucumber'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 # Gems used only for assets and not required
@@ -30,6 +34,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'less-rails'
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
