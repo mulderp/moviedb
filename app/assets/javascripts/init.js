@@ -25,7 +25,7 @@ MA.vent.on("authentication:switch_views", function(ev) {
 
 MA.vent.on("authentication:logged_in", function() {
   MA.navbar.show(new MA.Views.Items.LogoutNavbar({model: MA.currentUser}));
-  MA.main.show(MA.layouts.main);
+  MA.main.show(MA.composites.movies);
 });
 
 MA.vent.on("authentication:logged_out", function() {
