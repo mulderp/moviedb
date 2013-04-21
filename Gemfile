@@ -32,6 +32,10 @@ group :assets do
   gem 'therubyracer'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'jquery-rails'
 gem 'less-rails'
 
