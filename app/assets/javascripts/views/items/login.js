@@ -1,7 +1,7 @@
-MA.Views.Unauthenticated = MA.Views.Unauthenticated || {};
+MA.Views.Items = MA.Views.Items || {};
 
-MA.Views.Unauthenticated.Login = Backbone.Marionette.ItemView.extend({
-  template: 'unauthenticated/login',
+MA.Views.Items.Login = Backbone.Marionette.ItemView.extend({
+  template: 'items/login',
 
   events: {
     'submit form': 'login'

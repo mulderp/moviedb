@@ -1,5 +1,5 @@
-MA.Views.Layouts.Navbar = Backbone.Marionette.Layout.extend({
-  template: 'layouts/navbar',
+MA.Views.Layouts.Login = Backbone.Marionette.Layout.extend({
+  template: 'layouts/login',
   regions: {
     navbar: '#navbar'
   },
@@ -10,10 +10,6 @@ MA.Views.Layouts.Navbar = Backbone.Marionette.Layout.extend({
     'click ul.nav li a': 'switchViews'
   },
 
-  onShow: function() {
-    //
-  },
-
   switchViews: function(e) {
     e.preventDefault();
     MA.vent.trigger("authentication:switch_views", e);
@@ -22,5 +18,5 @@ MA.Views.Layouts.Navbar = Backbone.Marionette.Layout.extend({
 });
 
 MA.addInitializer(function() {
-  MA.layouts.navbar = new MA.Views.Layouts.Navbar();
+  MA.layouts.login = new MA.Views.Layouts.Login();
 });

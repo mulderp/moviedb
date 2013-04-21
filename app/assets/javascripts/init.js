@@ -20,12 +20,12 @@ MA.vent.on("authentication:switch_views", function(ev) {
 });
 
 MA.vent.on("authentication:logged_in", function() {
-  MA.navbar.show(MA.layouts.navbar);
+  MA.navbar.show(MA.layouts.logout);
   MA.main.show(MA.layouts.main);
 });
 
 MA.vent.on("authentication:logged_out", function() {
-  MA.navbar.show(MA.layouts.navbar);
+  MA.navbar.show(MA.layouts.login);
   MA.main.show(MA.layouts.main);
 });
 
