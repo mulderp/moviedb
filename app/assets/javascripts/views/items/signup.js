@@ -32,7 +32,7 @@ MA.Views.Items.Signup = Backbone.Marionette.ItemView.extend({
      .done(function(response) { 
 	     console.log("ok"); 
 	     console.log(response);
-	     MA.currentUser = new MA.Models.User(response);
+	     MA.currentUser = new MA.Models.User(response.user);
 	     MA.vent.trigger("authentication:logged_in");
 	  })
      .fail(function(response) { 

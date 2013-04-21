@@ -16,21 +16,21 @@ MA.addRegions({
 });
 
 MA.vent.on("authentication:switch_views", function(ev) {
-  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);  
+  MA.main.show(MA.layouts.main.views[$(ev.target).data('content')]);  
 });
 
 MA.vent.on("authentication:logged_in", function() {
-  MA.navbar.show(MA.layouts.logout);
+  MA.navbar.show(new MA.Views.Items.LogoutNavbar({model: MA.currentUser}));
   MA.main.show(MA.layouts.main);
 });
 
 MA.vent.on("authentication:logged_out", function() {
-  MA.navbar.show(MA.layouts.login);
+  MA.navbar.show(new MA.Views.Items.LoginNavbar());
   MA.main.show(MA.layouts.main);
 });
 
 MA.bind("initialize:after", function() {
-  if(MA.currentUser) {
+  if (MA.currentUser) {
     MA.vent.trigger("authentication:logged_in");
   }
   else {
