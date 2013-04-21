@@ -6,7 +6,7 @@ class Api::RegistrationsController < Api::BaseController
     user = User.new(params['user'])
     if user.save
       user.reset_authentication_token!
-      render :json => { :auth_token => user.authentication_token, :email => user.email }, :status=>201
+      render :json => { :user => { :auth_token => user.authentication_token, :email => user.email }}, :status=>200
       return
     else
       warden.custom_failure!

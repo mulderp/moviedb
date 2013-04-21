@@ -9,11 +9,11 @@ MA.Views.Unauthenticated.Login = Backbone.Marionette.ItemView.extend({
 
   initialize: function() {
     this.model = new MA.Models.UserSession();
-    // this.modelBinder = new Backbone.ModelBinder();
+    this.modelBinder = new Backbone.ModelBinder();
   },
 
   onRender: function() {
-    // this.modelBinder.bind(this.model, this.el);
+    this.modelBinder.bind(this.model, this.el);
   },
 
   login: function(e) {
@@ -28,7 +28,6 @@ MA.Views.Unauthenticated.Login = Backbone.Marionette.ItemView.extend({
 
     this.model.save(this.model.attributes, {
       success: function(userSession, response) {
-        el.find('input.btn-primary').button('reset');
         MA.currentUser = new MA.Models.User(response);
         MA.vent.trigger("authentication:logged_in");
       },

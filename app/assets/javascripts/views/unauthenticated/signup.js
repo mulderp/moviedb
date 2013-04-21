@@ -28,23 +28,19 @@ MA.Views.Unauthenticated.Signup = Backbone.Marionette.ItemView.extend({
     el.find('.help-block').remove();
     el.find('.control-group.error').removeClass('error');
 
-    this.model.save({user: _.clone(this.attributes)}, {
-      success: function(userSession, response) {
-        el.find('input.btn-primary').button('reset');
-        MA.currentUser = new MA.Models.User(response);
-        MA.vent.trigger("authentication:logged_in");
-      },
-      error: function(userSession, response) {
-        var result = $.parseJSON(response.responseText);
-        el.find('form').prepend(MA.Helpers.Notifications.error("Unable to complete signup."));
-        _(result.errors).each(function(errors,field) {
-          $('#'+field+'_group').addClass('error');
-          _(errors).each(function(error, i) {
-            $('#'+field+'_group .controls').append(MA.Helpers.FormHelpers.fieldHelp(error));
-          });
-        });
-        el.find('input.btn-primary').button('reset');
-      }
-    });
+    $.post('/api/users.json', {user: this.model.attributes})
+     .done(function(response) { 
+	     console.log("ok"); 
+	     console.log(response);
+	     MA.currentUser = new MA.Models.User(response);
+	     MA.vent.trigger("authentication:logged_in");
+	  })
+     .fail(function(response) { 
+	     console.log('...'); 
+	     var result = $.parseJSON(response.responseText);
+	     console.log(result);
+	     el.find('input.btn-primary').prop('value', 'Sign up');
+	 });
+
   }
 });
