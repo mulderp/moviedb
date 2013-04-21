@@ -70,7 +70,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing :skip => :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:token_auth]
+  # config.skip_session_storage = [:token_auth]
   config.token_authentication_key = :auth_token
 
   # ==> Configuration for :database_authenticatable

@@ -7,9 +7,9 @@ MA.Views.Layouts.Main = Backbone.Marionette.Layout.extend({
   views: {},
 
   onShow: function() {
-    this.views.login = new MA.Views.Items.Login();
-    this.views.signup = new MA.Views.Items.Signup();
-    this.main.show(this.views.login);
+    this.views.login = MA.Views.Items.Login;
+    this.views.signup = MA.Views.Items.Signup;
+    this.main.show(new this.views.login);
   }
 });
 

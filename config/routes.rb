@@ -1,4 +1,6 @@
 Moviedb::Application.routes.draw do
+  get "movies/index"
+
   root :to => 'welcome#index'
 
   namespace :api do

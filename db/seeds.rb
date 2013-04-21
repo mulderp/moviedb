@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+category = Category.create({ :name => "Action" })
+movie = Movie.create({ :title => "My test movie", :category_id => category.id})

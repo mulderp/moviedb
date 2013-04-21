@@ -15,6 +15,8 @@ module Moviedb
       g.test_framework  :rspec, :fixture => false
       g.view_specs      false
       g.helper_specs    false
+      g.stylesheets     false
+      g.helpers         false
     end
 
     # Settings in config/environments/* take precedence over those specified here.

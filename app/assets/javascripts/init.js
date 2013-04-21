@@ -16,7 +16,7 @@ MA.addRegions({
 });
 
 MA.vent.on("authentication:switch_views", function(ev) {
-  MA.main.show(MA.layouts.main.views[$(ev.target).data('content')]);  
+  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);  
 });
 
 MA.vent.on("authentication:logged_in", function() {

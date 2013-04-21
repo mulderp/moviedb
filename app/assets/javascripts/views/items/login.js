@@ -17,26 +17,32 @@ MA.Views.Items.Login = Backbone.Marionette.ItemView.extend({
   },
 
   login: function(e) {
+ 
+    console.log("* login *");
 
     var self = this,
         el = $(this.el);
 
     e.preventDefault();
 
-    el.find('input.btn-primary').button('loading');
+    el.find('input.btn-primary').prop('value', 'loading');
     el.find('.alert-error').remove();
+    el.find('.help-block').remove();
+    el.find('.control-group.error').removeClass('error');
 
-    this.model.save(this.model.attributes, {
-      success: function(userSession, response) {
-        MA.currentUser = new MA.Models.User(response);
-        MA.vent.trigger("authentication:logged_in");
-      },
-      error: function(userSession, response) {
-        var result = $.parseJSON(response.responseText);
-        el.find('form').prepend(MA.Helpers.Notifications.error(result.error));
-        el.find('input.btn-primary').button('reset');
-      }
-    });
+    $.post('/api/users/sign_in.json', {user: this.model.attributes})
+     .done(function(response) { 
+	     console.log("ok"); 
+	     console.log(response);
+	     MA.currentUser = new MA.Models.User(response.user);
+	     MA.vent.trigger("authentication:logged_in");
+	  })
+     .fail(function(response) { 
+	     console.log('...'); 
+	     var result = $.parseJSON(response.responseText);
+	     console.log(result);
+	     el.find('input.btn-primary').prop('value', 'Sign up');
+	 });
 
   }
 
