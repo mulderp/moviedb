@@ -7,8 +7,12 @@ MA.Collections = {};
 MA.Routers = {};
 MA.Helpers = {};
 
-// Instantiated global layouts
+// Instantiated global variables
 MA.layouts = {};
+MA.composites = {};
+MA.collections = {};
+MA.models = {};
+
 
 MA.addRegions({
   navbar: '#navbar',
@@ -26,7 +30,7 @@ MA.vent.on("authentication:logged_in", function() {
 
 MA.vent.on("authentication:logged_out", function() {
   MA.navbar.show(new MA.Views.Items.LoginNavbar());
-  MA.main.show(MA.layouts.main);
+  MA.main.show(MA.composites.movies);
 });
 
 MA.bind("initialize:after", function() {
