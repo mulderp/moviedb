@@ -16,22 +16,32 @@ MA.models = {};
 
 MA.addRegions({
   navbar: '#navbar',
-  main: '#main'
+  main: '#main',
+  filter: '#filter'
 });
 
 MA.vent.on("authentication:switch_views", function(ev) {
-  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);  
+  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);
+  MA.filter.close();
 });
 
 MA.vent.on("authentication:logged_in", function() {
   MA.navbar.show(new MA.Views.Items.LogoutNavbar({model: MA.currentUser}));
+  MA.filter.show(new MA.Views.Items.Filter());
   MA.main.show(MA.composites.movies);
 });
 
 MA.vent.on("authentication:logged_out", function() {
   MA.navbar.show(new MA.Views.Items.LoginNavbar());
+  MA.filter.show(new MA.Views.Items.Filter());
   MA.main.show(MA.composites.movies);
 });
+
+MA.vent.on("menu:new_movie", function(ev) {
+  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);
+  MA.filter.close();  
+});
+
 
 MA.bind("initialize:after", function() {
   if (MA.currentUser) {
