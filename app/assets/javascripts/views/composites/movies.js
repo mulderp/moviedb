@@ -11,7 +11,7 @@ MA.addInitializer(function(){
   MA.collections.movies = new MA.Collections.Movies();
   MA.composites.movies = new MA.Views.Composites.Movies({
 	itemView: MA.Views.Items.Movie,
-	model: MA.collections.movies.meta,
+	model: new MA.Models.MetaMovie({total: 1}),
 	collection: MA.collections.movies
   });
   MA.collections.movies.fetch();
