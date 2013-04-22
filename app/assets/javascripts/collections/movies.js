@@ -4,7 +4,7 @@ MA.Collections.Movies = Backbone.Collection.extend({
     this._meta = {};	
   },
   parse: function(data) {
-	this.meta('total', data.meta.count);
+	this.meta('total', data.meta.total);
 	return data.movies;
   },
   meta: function(prop, value) {
