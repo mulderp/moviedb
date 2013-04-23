@@ -3,4 +3,7 @@ class Category < ActiveRecord::Base
 
   has_many :movies
 
+  def active_model_serializer
+    CategorySerializer
+  end
 end

@@ -1,14 +1,14 @@
 <div class="title">  
   {{ title }} 
 </div>
+<div class="stars">
+  {{#liststars stars }}{{/liststars}}
+</div>
 <div class="label label-{{ category }}">
   {{ category }}
 </div>
 <div class="description" style="display:none">
   {{ description }}
-</div>
-<div class="stars">
-  {{ stars }}
 </div>
 {{#if MA.currentUser }}
   Add Rating

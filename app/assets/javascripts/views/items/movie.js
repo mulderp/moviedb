@@ -3,7 +3,7 @@ MA.Views.Items = MA.Views.Items || {};
 MA.Views.Items.Movie = Backbone.Marionette.ItemView.extend({
 
   template: 'items/movie',
-  className: 'movie',
+  className: 'movie well',
   events: {
     'mouseenter': 'showDetails',
     'mouseleave': 'hideDetails',

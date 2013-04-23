@@ -11,6 +11,7 @@ gem 'devise'
 group :development do
   gem 'sqlite3'
   gem 'quiet_assets'
+  gem 'rack-livereload'
 end
 
 group :development, :test do
