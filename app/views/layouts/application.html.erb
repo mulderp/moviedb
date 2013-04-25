@@ -36,18 +36,17 @@
 
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container no-collapse">
-          <%= link_to "MovieDB", root_path, :class => "brand" %>
-          <ul id="navbar" class="nav pull-right">
-            <li><a href="/login" data-toggle="tab" data-content="login">Login</a></li>
-            <li><a href="/signup" data-toggle="tab" data-content="signup">Sign up</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </div>
+     <div id="navbar" class="navbar navbar-fixed-top">
+       <div class="navbar-inner">
+         <div class="container no-collapse">
+           <a href="/" class="brand">MoviesDB</a>
+           <ul id="navbar" class="nav pull-right">
+             <li><a href="/login">Login</a></li>
+             <li><a href="/signup">Sign up</a></li>
+           </ul>
+         </div>
+       </div>
+     </div>
     
     <%= yield %>
 
