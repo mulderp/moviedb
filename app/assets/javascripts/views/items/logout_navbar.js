@@ -5,11 +5,8 @@ MA.Views.Items.LogoutNavbar = Backbone.Marionette.ItemView.extend({
   template: 'items/logout_navbar',
   model: MA.currentUser,
 
-  views: {},
-
   events: {
 	'click #addmovie': 'showNewMovie',
-    'click #logout': 'logout'
   },
 
   showNewMovie: function(ev) {
