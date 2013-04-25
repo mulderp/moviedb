@@ -1,6 +1,14 @@
 <div class="title">  
   {{ title }} 
 </div>
+{{#if editable }}
+  <select class="add-rating">
+    <option>5 stars</option>
+    <option>4 stars</option>
+    <option>3 stars</option>
+    <option>2 stars</option>
+  <select/>
+{{/if}}
 <div class="stars">
   {{#liststars stars }}{{/liststars}}
 </div>
@@ -10,6 +18,3 @@
 <div class="description" style="display:none">
   {{ description }}
 </div>
-{{#if MA.currentUser }}
-  Add Rating
-{{/if}}

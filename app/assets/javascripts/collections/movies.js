@@ -1,7 +1,8 @@
 MA.Collections.Movies = Backbone.Collection.extend({
   url: '/api/movies.json',
   initialize: function() {
-    this._meta = {};	
+    this._meta = {};
+    this.model = MA.Models.Movie;
   },
   parse: function(data) {
 	this.meta('total', data.meta.total);
@@ -15,7 +16,3 @@ MA.Collections.Movies = Backbone.Collection.extend({
         }
    }
 });
-
-MA.addInitializer(function() {
-  MA.Collections.Movies.model = MA.Models.Movie;
-})
