@@ -3,7 +3,7 @@ MA.Views.CollectionViews = MA.Views.CollectionViews || {};
 MA.Views.CollectionViews.Genres = Backbone.Marionette.CompositeView.extend({
   template: 'composites/filter',
   className: 'genres',
-  id: 'aaa',
+  id: 'genres-filter',
 });
 
 MA.addInitializer(function(){
