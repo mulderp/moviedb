@@ -30,8 +30,6 @@ MA.Views.Items.Signup = Backbone.Marionette.ItemView.extend({
 
     $.post('/api/users.json', {user: this.model.attributes})
      .done(function(response) { 
-	     console.log("ok"); 
-	     console.log(response);
 	     MA.currentUser = new MA.Models.User(response.user);
 	     MA.vent.trigger("authentication:logged_in");
 	  })
