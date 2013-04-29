@@ -4,7 +4,6 @@ MA.Views.Composites.Movies = Backbone.Marionette.CompositeView.extend({
   className: 'movies',
   id: 'movies',
   template: 'composites/movies'
-
 });
 
 MA.addInitializer(function(){
@@ -16,8 +15,4 @@ MA.addInitializer(function(){
 	collection: MA.collections.movies
   });
   
-  MA.collections.movies.fetch({success: function(data){
-	metaMovie.set('total', data.meta('total'));
-    MA.composites.movies.render();
-  }});
 });

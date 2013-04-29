@@ -1,5 +1,4 @@
 MA.Collections.Categories = Backbone.Collection.extend({
-	
 });
 
 MA.addInitializer(function() {
