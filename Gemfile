@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'twitter-bootstrap-rails'
+gem 'faraday'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
