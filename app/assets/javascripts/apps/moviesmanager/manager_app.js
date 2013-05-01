@@ -5,11 +5,13 @@ MA.module('Manager', function(Manager, MA, Backbone, Marionette, $, _) {
     showMovies: function() {
       var manager = new Manager.Show.Controller();
       manager.showAllMovies();
+      Backbone.history.navigate("#/mymovies");
     },
 
     showAddMovie: function(genre) {
       var manager = new Manager.Show.Controller();
       manager.showNewMovie();
+      Backbone.history.navigate("#/new");
     },
 
     showEditMovie: function(genre) {

@@ -5,6 +5,7 @@ MA.module('Manager.Show', function(Show, MA, Backbone, Marionette, $, _) {
 			var that = this;
 			var movies = MA.request("movies:mymovies", function(movies) {
 				var moviesView = that.getMoviesView(movies);
+				MA.filter.close();
 				MA.main.show(moviesView);
 			});
 		},

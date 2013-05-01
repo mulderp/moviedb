@@ -18,7 +18,7 @@ MA.module('MoviesLib', function(LibApp, MA, Backbone, Marionette, $, _) {
     API.showAllMovies();
   });
 
-  MA.commands.setHandler("browser", function() {
+  MA.commands.setHandler("browser:start", function() {
     API.showAllMovies();	
   })
 

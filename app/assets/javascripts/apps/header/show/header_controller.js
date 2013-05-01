@@ -16,11 +16,10 @@ MA.module('Header.Show', function(Show, MA, Backbone, Marionette, $, _) {
 		},
 		
 		_browse: function() {
-			
+			MA.execute("browser:start");
 		},
 		
 		_menuSelected: function(item) {
-			console.log(item);
 			MA.execute("manager:start");
 		}
 		

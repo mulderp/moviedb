@@ -1,15 +1,22 @@
-MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
+MA.module('Manager.Show', function(Show, App, Backbone, Marionette, $, _) {
 
-	Show.MovieListView = Backbone.Marionette.CollectionView.extend({
+    Show.ListEmpty = Backbone.Marionette.ItemView.extend({
+	  template: 'account/no_movies',
+	  tagName: 'tr'
+    });
 
-		template: 'items/movie',
-		className: 'movie well',
-		events: {
-			'click': 'toggleDetails'
-		},
-		toggleDetails: function() {
-			this.$el.find('.description').toggle();
-		}
+    Show.MovieView = Backbone.Marionette.ItemView.extend({
+	  template: 'account/movie',
+	  tagName: 'tr'
+    });
+	
+	Show.MovieListView = Backbone.Marionette.CompositeView.extend({
+
+		template: 'account/list',
+		itemView: Show.MovieView,
+		itemViewContainer: 'tbody',
+		emptyView: Show.ListEmpty,
+
 
 	});
 

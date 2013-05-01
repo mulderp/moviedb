@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :username
 
   has_many :ratings, :foreign_key => :author_id
+  has_many :movies
 
 end
