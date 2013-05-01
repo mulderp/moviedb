@@ -46,7 +46,11 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
      }
   };
 
-  MA.reqres.setHandler("movies", function(callback) {
+  MA.reqres.setHandler("movies:all", function(callback) {
+    return API.getMovies(callback);
+  });
+
+  MA.reqres.setHandler("movies:genre", function(callback) {
     return API.getMovies(callback);
   });
 });

@@ -3,11 +3,13 @@ MA.module('MoviesLib', function(LibApp, App, Backbone, Marionette, $, _) {
 
   var API = {
     showAllMovies: function() {
-      LibApp.Show.Controller.showAllMovies();
+      var libApp = new LibApp.Show.Controller();
+      libApp.showAllMovies();
     },
 
     showMoviesByGenre: function(genre) {
-      LibApp.Show.Controller.showMoviesByGenre(genre);
+      var libApp = new LibApp.Show.Controller();
+      libApp.showMoviesByGenre(genre);
     }
 
   };
