@@ -22,6 +22,7 @@ MA.addRegions({
 });
 
 MA.addInitializer(function() {
+  MA.module("Header").start();
   MA.module("MoviesLib").start();
 });
 
@@ -30,12 +31,5 @@ MA.on("initialize:after", function() {
     Backbone.history.start();
   }
 });
-
-var originalTrigger = Backbone.Events.trigger;
-Backbone.Events.trigger = function(){
-  console.log("Event Triggered:");
-  console.log(arguments.join(", "));
-  originalTrigger.apply(this, arguments);
-}
 
 
