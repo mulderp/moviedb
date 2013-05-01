@@ -21,34 +21,21 @@ MA.addRegions({
   filter: '#filter'
 });
 
-
-MA.vent.on("authentication:logged_in", function() {
-  app = new MA.AppController();
-  app.show();
+MA.addInitializer(function() {
+  MA.module("MoviesLib").start();
 });
 
-MA.vent.on("authentication:logged_out", function() {
-  app = new MA.AppController();
-  app.show();
-});
-
-MA.vent.on("authentication:switch_views", function(ev) {
-  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);
-  MA.filter.close();
-});
-
-
-MA.vent.on("menu:new_movie", function(ev) {
-  MA.main.show(new MA.layouts.main.views[$(ev.target).data('content')]);
-  MA.filter.close();  
-});
-
-
-MA.bind("initialize:after", function() {
-  if (MA.currentUser) {
-    MA.vent.trigger("authentication:logged_in");
-  }
-  else {
-    MA.vent.trigger("authentication:logged_out");
+MA.on("initialize:after", function() {
+  if (Backbone.history) {
+    Backbone.history.start();
   }
 });
+
+var originalTrigger = Backbone.Events.trigger;
+Backbone.Events.trigger = function(){
+  console.log("Event Triggered:");
+  console.log(arguments.join(", "));
+  originalTrigger.apply(this, arguments);
+}
+
+
