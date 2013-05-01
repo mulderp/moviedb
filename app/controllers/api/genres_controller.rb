@@ -6,6 +6,6 @@ class Api::GenresController < ApplicationController
     category = Category.where(:name => params[:id]).first
     puts category.inspect
     movies = Movie.where(:category_id => category.id)
-    render :json => { :movies => movies, :meta => { :total => movies.size}}, :each_serializer => MovieSerializer, :root => false
+    render :json => movies, :each_serializer => MovieSerializer, :meta => { :total => movies.size }, :root => 'movies'
   end
 end
