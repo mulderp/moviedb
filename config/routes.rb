@@ -5,7 +5,8 @@ Moviedb::Application.routes.draw do
 
   namespace :api do
     devise_for :users
-    resources :movies, :only=>[:index, :show]
+    resources :movies, :only => [:index, :show]
+    resources :genres, :only => [:index, :show]
   end  
 
   devise_for :users

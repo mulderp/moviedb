@@ -14,7 +14,18 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
 
     model: Entities.Movie,
 
-    url: '/api/movies.json',
+    url: function() {
+	  var genre = this.meta('activeGenre');
+	  var baseUrl = '/api/';
+	  
+	  if (genre != undefined) {
+	    return baseUrl + 'genres/' + genre + '.json';	
+	  }
+	  else
+	  {
+	    return baseUrl + 'movies.json';	
+	  }
+	},
 
     initialize: function() {
        this._meta = {};
@@ -43,6 +54,13 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
 	  deferred.resolve(movies);
 	  deferred.promise();
       return movies;
+     },
+     getMoviesByGenre: function(genre, callback) {
+	   var movies = new Entities.Movies();
+	console.log(genre);
+	   movies.meta('activeGenre', genre);
+	  movies.fetch({success: callback});
+      return movies;
      }
   };
 
@@ -50,7 +68,7 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
     return API.getMovies(callback);
   });
 
-  MA.reqres.setHandler("movies:genre", function(callback) {
-    return API.getMovies(callback);
+  MA.reqres.setHandler("movies:genre", function(genre, callback) {
+    return API.getMoviesByGenre(genre, callback);
   });
 });

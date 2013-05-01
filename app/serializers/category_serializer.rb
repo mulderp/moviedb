@@ -1,5 +1,5 @@
 class CategorySerializer < ActiveModel::Serializer
-  attributes :name, :total
+  attributes :display_name, :name, :total
 
   def total
     Movie.where(:category_id => object).count

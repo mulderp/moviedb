@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-action = Category.where({ :name => "Action" }).first_or_create
-comedy = Category.where({ :name => "Comedy" }).first_or_create
-romance = Category.where({ :name => "Romance" }).first_or_create
+action = Category.where({ :name => "action", :display_name => "Action" }).first_or_create
+comedy = Category.where({ :name => "comedy", :display_name => "Comedy" }).first_or_create
+romance = Category.where({ :name => "romance", :display_name => "Romance" }).first_or_create
 movie = Movie.create({ :title => "Sleepless in Seattle", :category_id => romance.id})
 movie = Movie.create({ :title => "You've got Mail", :category_id => romance.id})
 movie = Movie.create({ :title => "When Harry Met Sally", :category_id => romance.id})

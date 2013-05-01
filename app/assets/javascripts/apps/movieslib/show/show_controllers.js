@@ -18,9 +18,10 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 				MA.main.show(moviesView);
 			});
 		},
-		_showMoviesByGenre: function() {
+		_showMoviesByGenre: function(genre) {
 			var that = this;
-			var movies = MA.request("movies:genre", function(movies) {
+			console.log(genre);
+			var movies = MA.request("movies:genre", genre, function(movies) {
 				var metaMovie = new Backbone.Model({total: movies.meta('total')});
 				var moviesView = that.getMoviesView(movies, metaMovie);
 				MA.main.show(moviesView);
