@@ -24,6 +24,7 @@ MA.addRegions({
 MA.addInitializer(function() {
   MA.module("Header").start();
   MA.module("MoviesLib").start();
+  MA.module("Manager").start();
 });
 
 MA.on("initialize:after", function() {

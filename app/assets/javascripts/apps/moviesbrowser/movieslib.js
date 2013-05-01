@@ -1,4 +1,4 @@
-MA.module('MoviesLib', function(LibApp, App, Backbone, Marionette, $, _) {
+MA.module('MoviesLib', function(LibApp, MA, Backbone, Marionette, $, _) {
   this.startWithParent = false;
 
   var API = {
@@ -16,6 +16,10 @@ MA.module('MoviesLib', function(LibApp, App, Backbone, Marionette, $, _) {
 
   LibApp.on("start", function() {
     API.showAllMovies();
+  });
+
+  MA.commands.setHandler("browser", function() {
+    API.showAllMovies();	
   })
 
 });

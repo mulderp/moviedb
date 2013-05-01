@@ -57,10 +57,15 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
      },
      getMoviesByGenre: function(genre, callback) {
 	   var movies = new Entities.Movies();
-	console.log(genre);
 	   movies.meta('activeGenre', genre);
-	  movies.fetch({success: callback});
-      return movies;
+	   movies.fetch({success: callback});
+       return movies;
+     },
+     getMyMovies: function(genre, callback) {
+	   var movies = new Entities.Movies();
+	   movies.meta('private', 'true');
+	   movies.fetch({success: callback});
+       return movies;
      }
   };
 
@@ -71,4 +76,5 @@ MA.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
   MA.reqres.setHandler("movies:genre", function(genre, callback) {
     return API.getMoviesByGenre(genre, callback);
   });
+
 });

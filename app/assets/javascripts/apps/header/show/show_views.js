@@ -17,12 +17,13 @@ MA.module('Header.Show', function(Show, App, Backbone, Marionette, $, _) {
 
 		showMain: function(ev) {
 			ev.preventDefault();
-			MA.vent.trigger('authentication:logged_in', ev);
+			this.trigger('browser');
 		},
 
 		showNewMovie: function(ev) {
 			ev.preventDefault();
-			MA.vent.trigger('menu:new_movie', ev);
+			var item = $(ev.currentTarget).data('content');
+			this.trigger('manager:start', item);
 		},
 
 		onRender: function() {
