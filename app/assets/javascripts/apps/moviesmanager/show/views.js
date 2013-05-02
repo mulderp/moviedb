@@ -11,12 +11,20 @@ MA.module('Manager.Show', function(Show, App, Backbone, Marionette, $, _) {
     });
 	
 	Show.MovieListView = Backbone.Marionette.CompositeView.extend({
-
 		template: 'account/list',
 		itemView: Show.MovieView,
 		itemViewContainer: 'tbody',
 		emptyView: Show.ListEmpty,
 
 	});
+	
+	Show.AddMovieView = Backbone.Marionette.ItemView.extend({
+		template: 'account/new_movie',
+		itemView: Show.MovieView,
+		itemViewContainer: 'tbody',
+		emptyView: Show.ListEmpty,
+
+	});
+	
 
 });

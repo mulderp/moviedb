@@ -6,4 +6,7 @@ class Movie < ActiveRecord::Base
 
   has_many :ratings
 
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
 end
