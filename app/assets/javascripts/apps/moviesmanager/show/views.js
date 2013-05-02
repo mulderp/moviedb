@@ -17,7 +17,6 @@ MA.module('Manager.Show', function(Show, App, Backbone, Marionette, $, _) {
 		itemViewContainer: 'tbody',
 		emptyView: Show.ListEmpty,
 
-
 	});
 
 });

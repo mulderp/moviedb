@@ -9,6 +9,10 @@ MA.module('Manager.Show', function(Show, MA, Backbone, Marionette, $, _) {
 				MA.main.show(moviesView);
 			});
 		},
+		
+		showNewMovie: function() {
+			
+		},
 
 		getMoviesView: function(movies) {
 			var moviesIndex = new Show.MovieListView({collection: movies});
