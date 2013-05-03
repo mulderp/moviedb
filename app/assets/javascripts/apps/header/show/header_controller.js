@@ -4,14 +4,16 @@ MA.module('Header.Show', function(Show, MA, Backbone, Marionette, $, _) {
 
 		showNavbar: function() {
 			if (MA.currentUser) {
-				menu_view = new Show.MemberView({model: MA.currentUser})
+				var menu_view = new Show.MemberView({model: MA.currentUser})
 				MA.navbar.show(menu_view);
 				this.listenTo(menu_view, "browser", this._browse);
 				this.listenTo(menu_view, "manager:start", this._menuSelected);
 			}
 			else
 			{
-				MA.navbar.show(new Show.GuestView());
+				var menu_view = new Show.GuestView();
+				MA.navbar.show(menu_view);
+				this.listenTo(menu_view, "browser:search", this._search);
 			}
 		},
 		
@@ -21,6 +23,11 @@ MA.module('Header.Show', function(Show, MA, Backbone, Marionette, $, _) {
 		
 		_menuSelected: function(item) {
 			MA.execute("manager:start");
+		},
+		
+		_search: function(keywords) {
+			var movies = MA.request("movies:search", keywords);
+			console.log(movies);
 		}
 		
 

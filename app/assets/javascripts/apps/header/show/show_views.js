@@ -1,7 +1,16 @@
 MA.module('Header.Show', function(Show, App, Backbone, Marionette, $, _) {
 
 	Show.GuestView = Backbone.Marionette.ItemView.extend({
-		template: 'items/login_navbar'
+		template: 'items/login_navbar',
+		events: {
+			'submit .navbar-search': 'searchMovies'
+		},
+		
+		searchMovies: function(ev) {
+			var keywords = $(ev.currentTarget).children('input').val();
+			this.trigger("browser:search", keywords);
+			ev.preventDefault();
+		}
 	});
 
 

@@ -7,9 +7,15 @@ class Api::MoviesController < ApplicationController
     render :json => movies, :each_serializer => MovieSerializer, :meta => { :total => movies.size }
   end
 
-  def genre
+  def filter
     category = Category.where(:name => params[:genre])
     movies = Movie.where(:category => category)
     render :json => movies, :each_serializer => MovieSerializer, :meta => { :total => movies.size }
+  end
+
+  def search
+    movies = Movie.search(params[:q])
+    logger.info movies.to_json
+    render :json => movies.to_json
   end
 end

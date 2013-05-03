@@ -1,7 +1,4 @@
 Moviedb::Application.routes.draw do
-  get "accounts/show"
-
-  get "movies/index"
 
   root :to => 'welcome#index'
 
@@ -12,6 +9,7 @@ Moviedb::Application.routes.draw do
     resource :account, :only => [:show] do
       resources :movies, :only => [:index, :show]
     end
+    get 'search' => 'movies#search'
   end  
 
   devise_for :users
