@@ -1,11 +1,21 @@
 <div class="navbar-inner">
-   <div class="container no-collapse">
-      <a href="#" class="brand">MoviesDB</a>
-      <ul id="navbar" class="nav pull-right">
-        <li><a id="addmovie" href="#" data-content="addmovie">My Movies</a></li>
-        <li><a id="logout" href="/logout">Logout</a></li>
-        <li><a href="#">{{ email }}</a></li>
-      </ul>
-    </div>
-  </div>
+	<div class="container no-collapse">
+		<a href="#" class="brand">MoviesDB</a>
+		<ul id="navbar" class="nav pull-right">
+			<li>
+				<form class="navbar-search pull-left">
+					<input type="text" class="search-query" placeholder="Search">
+				</form>
+			</li>
+			<li>
+				<a id="addmovie" href="#" data-content="addmovie" name="addmovie">My Movies</a>
+			</li>
+			<li>
+				<a id="logout" href="/logout" name="logout">Logout</a>
+			</li>
+			<li>
+				<a href="#">{{ email }}</a>
+			</li>
+		</ul>
+	</div>
 </div>

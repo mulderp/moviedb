@@ -11,7 +11,7 @@ MA.module('Manager', function(Manager, MA, Backbone, Marionette, $, _) {
     showAddMovie: function(genre) {
       var manager = new Manager.Show.Controller();
       manager.showNewMovie();
-      Backbone.history.navigate("#/new");
+      Backbone.history.navigate("#/mymovies/new");
     },
 
     showEditMovie: function(genre) {
