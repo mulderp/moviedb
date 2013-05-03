@@ -17,9 +17,12 @@ namespace :movies do
     file = File.new(ENV['file'])
     redis = Redis.new
     file.each_line do |l|
-      if l =~ /^"(.*)"/
-        puts $1
-        # redis.zincrby 'movies:title', 1, $1
+      if l =~ /^"(.*)"\s*\((.*)\)\s*(\w*)/
+        if $3
+          puts $3
+          redis.zincrby "movies:genres", 1, $3
+          redis.sadd "movies:#{$3}", $1
+        end
       end
     end
 

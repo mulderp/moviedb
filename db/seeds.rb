@@ -6,11 +6,68 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-action = Category.where({ :name => "action", :display_name => "Action" }).first_or_create
-comedy = Category.where({ :name => "comedy", :display_name => "Comedy" }).first_or_create
-romance = Category.where({ :name => "romance", :display_name => "Romance" }).first_or_create
-movie = Movie.create({ :title => "Sleepless in Seattle", :category_id => romance.id})
-movie = Movie.create({ :title => "You've got Mail", :category_id => romance.id})
-movie = Movie.create({ :title => "When Harry Met Sally", :category_id => romance.id})
-movie = Movie.create({ :title => "The Matrix", :category_id => action.id})
-movie = Movie.create({ :title => "Beverly Hill Cops II", :category_id => action.id})
+categories = %w{Western History Thriller Fantasy SciFi Action Romance Drama Comedy}
+categories.each do |category|
+  c = Category.where(:name => category.downcase).first_or_create
+  c.display_name = category
+  c.save
+end
+
+Genres = categories.inject({}) { |genres, name| genres[name.downcase.to_sym] = Category.where(:name => name.downcase).first; genres }
+
+# romances
+["Sleepless in Seattle", "You've got Mail", "When Harry Met Sally"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  puts m.inspect
+  m.category = Genres[:romance]
+  m.save
+end
+
+# action
+["The Matrix", "Beverly Hill Cops II"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:action]
+  puts m.inspect
+  m.save
+end
+
+# western
+["The Wild Wild West","Into the West"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:western]
+  puts m.inspect
+  m.save
+end
+
+# comedies
+[ "Where Was Spring?", "The Robinsons", "Who's on Deck", "The Real Whatever", "Yes, Prime Minister", "Tiny Plastic Men", "The Secret Lives of Men", "Wai! Wai! Wai!", "Wildboyz", "The Simpsons"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:comedy]
+  puts m.inspect
+  m.save
+end
+
+
+# scifi
+["Code Name: Eternity", "Galaxy Park", "The Munsters", "Voltron Force", "Century City", "The Incredible Hulk", "Doctor Who", "Ulysse 31", "Scavengers", "Space Angel", "Hulk", "Max Headroom", "Room 9"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:scifi]
+  puts m.inspect
+  m.save
+end
+
+# drama
+[ "The Blue Knight", "The Extreme Truth", "Murdoch Mysteries", "Black Silk", "City of Vice", "Looking After Jo Jo", "State Coroner", "Best Friends"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:drama]
+  puts m.inspect
+  m.save
+end
+
+# thriller
+["A Time of Day", "Look Up in the Sky", "Femme Fatales", "Dirty Bomb Diaries", "Adrenalina", "Miami Vice", "Bird of Prey", "Century Falls", "Lost Angels", "My Friend Charles"].each do |m|
+  m = Movie.where(:title => m).first_or_create
+  m.category = Genres[:thriller]
+  puts m.inspect
+  m.save
+end
