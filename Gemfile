@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'twitter-bootstrap-rails'
 gem 'devise'
 
 # Bundle edge Rails instead:
@@ -31,6 +30,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'handlebars_assets', '0.12.0'
   gem 'therubyracer'
+  gem 'compass-rails'
+  gem 'bootstrap-sass-rails'
+  gem 'font-awesome-sass-rails'
 end
 
 group :production do
