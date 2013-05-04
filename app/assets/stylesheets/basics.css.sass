@@ -1,0 +1,77 @@
+$lightBlue: #DFf9FF
+$lighterBlue: #FAfBFF
+$darkblue: #4737A6
+$gray: #8D8FA1
+$yellow: #FFF1CC
+$gold: #A68A42
+$turkey: #376D87
+$pink: #C100C1
+$green: #AFD300
+$orange: #FFA400
+
+@import "compass"
+@import "twitter/bootstrap/mixins"
+
+body
+  padding-top: 60px
+  font-family: Arial
+
+
+.movie
+  min-height: 100px
+  @include makeColumn(4)
+  padding: 5px
+  @include gradient-vertical($lightBlue, white)
+  @include border-radius(6px)
+  border-color: $lightBlue
+
+  .title
+    font-weight: bold
+    font-size: 14px
+
+  .add-rating
+    width: 100px
+    float: right
+
+.filter
+  @include makeColumn(3)
+  @include border-radius(6px)
+  display: inline-block
+  float: left
+  padding: 5px
+  margin: 5px
+
+  ul
+    font-size: 14px
+
+    li
+      list-style: none
+      padding: 5px 10px 5px 10px
+
+      a
+        display: block
+        width: 190px 9
+        margin: 0 0 -1px
+        padding: 8px 14px
+        border: 1px solid #e5e5e5
+
+.label-romance
+  background-color: $darkblue
+
+.label-drama
+  background-color: $pink
+
+.label-comedy
+  background-color: $orange
+
+.label-scifi
+  background-color: $turkey
+
+.label-western
+  background-color: $gold
+
+.label-action
+  background-color: $green
+
+.label-thriller
+  background-color: $gray
