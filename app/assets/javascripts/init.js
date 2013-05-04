@@ -18,7 +18,8 @@ MA.navigations = {};
 MA.addRegions({
   navbar: '#navbar',
   main: '#main',
-  filter: '#filter'
+  filter: '#filter',
+  ratings: '#ratings'
 });
 
 MA.addInitializer(function() {
