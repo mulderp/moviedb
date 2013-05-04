@@ -71,3 +71,11 @@ end
   puts m.inspect
   m.save
 end
+
+
+# some random ratings
+Movie.all.each do |m|
+  r = m.ratings.new
+  r.stars = rand(5)
+  r.save
+end
