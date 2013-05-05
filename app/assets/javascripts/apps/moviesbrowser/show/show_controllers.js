@@ -4,8 +4,7 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 		
 		showAllMovies: function() {
 			this._showAllMovies();
-			this._showGenres();
-		
+			this._showFilter();
 		},
 		
 		showMoviesByGenre: function(genre) {
@@ -32,8 +31,8 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 			});
 		},
 		
-		_showGenres: function() {
-			var genreFilter = new Show.Filter({
+		_showFilter: function() {
+			var genreFilter = new Show.FilterController({
 				region: MA.filter
 			});
 			this.listenTo(genreFilter, "genre:selected", this._showMoviesByGenre);
@@ -48,24 +47,36 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 
 	});
 	
-	Show.Filter = Marionette.Controller.extend({
+	Show.FilterController = Marionette.Controller.extend({
 
 	  initialize: function(options){
-	    this.region = options.region;
+	    this.filter = new Marionette.RegionManager();
+	    this.filter.addRegion('filter', options.region);
+	    this.genres = this.filter.addRegion('genres', '#genres-filter');
+	    this.ratings = this.filter.addRegion('ratings', '#ratings-filter');
 	  },
 
 	  show: function(){
-	    this._showCatListView(MA.collections.categories);
+	    this._showGenresView(MA.collections.categories);
+	    this._showRatingsView(new Backbone.Collection([{rating: '5 Stars'}, {rating: '4 Stars'}, {rating: '3 Stars'}, {rating: '2 Stars'}, {rating: '1 Stars'}])); 
 	  },
 
-	  _showCatListView: function(categories){
+	  _showGenresView: function(genres){
 	    var view = new Show.GenresView({
-	      collection: categories
+	      collection: genres
 	    });
 	    this.listenTo(view, "genre:selected", this._categorySelected);
 		this.listenTo(view, "genre:deselected", this._categoryDeselected);
-
-	    this.region.show(view);
+	    this.genres.show(view);
+	  },
+	
+	  _showRatingsView: function(ratings){
+	    var view = new Show.RatingsView({
+	      collection: ratings
+	    });
+	    this.listenTo(view, "ratings:selected", this._ratingSelected);
+		this.listenTo(view, "ratings:deselected", this._ratingDeselected);
+        this.ratings.show(view);
 	  },
 
 	  _categorySelected: function(category) {
