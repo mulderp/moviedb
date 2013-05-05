@@ -37,6 +37,7 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 				region: MA.filter
 			});
 			this.listenTo(genreFilter, "genre:selected", this._showMoviesByGenre);
+			this.listenTo(genreFilter, "genre:deselected", this._showAllMovies);
 			genreFilter.show();
 		},
 		
@@ -62,12 +63,17 @@ MA.module('MoviesLib.Show', function(Show, MA, Backbone, Marionette, $, _) {
 	      collection: categories
 	    });
 	    this.listenTo(view, "genre:selected", this._categorySelected);
+		this.listenTo(view, "genre:deselected", this._categoryDeselected);
 
 	    this.region.show(view);
 	  },
 
 	  _categorySelected: function(category) {
 	    this.trigger("genre:selected", category);
+	  },
+	
+	  _categoryDeselected: function(category) {
+		this.trigger("genre:deselected", category);
 	  }
 
 	});

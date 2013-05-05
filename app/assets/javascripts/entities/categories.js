@@ -3,24 +3,19 @@ MA.Models.Genre = Backbone.Model.extend({
 		selected: false
 	},
 	
-	is_selected: function() {
-		return (this.get('selected') == true);
-	},
-	
 	toggle: function() {
-		if (this.is_selected()) {
-			this.set('selected', false);
+		var that = this;
+		if (this.get('selected') == true) {
+			that.set('selected', false);
 		}
 		else
 		{
-			this.set('selected', true);
+			that.set('selected', true);
 		}
+		return this;
 	}
 });
 
 MA.Collections.Categories = Backbone.Collection.extend({
-	
-	model: MA.Models.Genre,
-	
-
+	model: MA.Models.Genre	
 });

@@ -1,9 +1,12 @@
-<li>
-<a href="#genre/{{ name }}" class="genre-item" data-genre="{{ name }}"><i class="icon-chevron-right"></i>
-{{ display_name }} ({{ total }})</a>
-<div class="ratings" style="display:none">
-  <a href="#">5 stars</a>
-  <a href="#">4 stars</a>
-  <a href="#">3 stars</a>
+<a href="#genre/{{ name }}" class="genre-item" data-genre="{{ name }}">
+  <i class="icon-chevron-{{#if selected }}down{{else}}right{{/if}}"></i>
+  {{ display_name }} ({{ total }})</a>
+{{#if selected }}
+<div class="ratings">
+  <a href="#" data-stars="5">5 stars</a>
+  <a href="#" data-stars="4">4 stars</a>
+  <a href="#" data-stars="3">3 stars</a>
+  <a href="#" data-stars="2">2 stars</a>
+  <a href="#" data-stars="1">1 stars</a>
 </div>
-</li>
+{{/if}}

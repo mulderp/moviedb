@@ -24,6 +24,7 @@ MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
 	Show.GenresItemView = Backbone.Marionette.ItemView.extend({
 		template: 'items/genre',
 		className: 'genres',
+		tagName: 'li',
 		id: 'genres-filter',
 
 		events: {
@@ -31,7 +32,11 @@ MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
 		},
 		
 		initialize: function() {
-			this.listenTo(this.model, 'change:selected', this.toggleRatings);
+		   var that = this;
+		   this.model.on("change:selected", function() {
+              that.render();
+              that.trigger('genre:selected', that);
+	      });	
 		},
 		
 		genreClicked: function(e) {
@@ -40,16 +45,6 @@ MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
 			this.model.toggle();
 		},
 		
-		toggleRatings: function() {
-			var ratings = $(this.el).find('.ratings');
-			if (this.model.is_selected()) {
-			  this.trigger('genre:selected', this.model.get('name'));
-			  ratings.show();
-			}
-			else {
-			   ratings.hide();
-			}
-		}
 	});
 	
 	Show.GenresView = Backbone.Marionette.CollectionView.extend({
@@ -63,7 +58,13 @@ MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
 		},
 		
 		notifyController: function(view) {
-			this.trigger('genre:selected', view.model.get('name'));
+			if (view.model.get('selected')) {
+			  this.trigger('genre:selected', view.model.get('name'));
+			}
+			else
+			{
+			   this.trigger('genre:deselected', view.model.get('name'));
+			}
 		}
  	});
 	
