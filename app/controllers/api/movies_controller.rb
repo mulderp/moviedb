@@ -14,8 +14,8 @@ class Api::MoviesController < ApplicationController
   end
 
   def search
-    movies = Movie.search(params[:q])
-    logger.info movies.to_json
-    render :json => movies.to_json
+    movies = Movie.search(params[:q], :load => true)
+    logger.info movies
+    render :json => movies, :each_serializer => MovieSerializer, :meta => { :total => movies.size }
   end
 end
