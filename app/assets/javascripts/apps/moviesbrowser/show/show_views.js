@@ -48,24 +48,22 @@ MA.module('MoviesLib.Show', function(Show, App, Backbone, Marionette, $, _) {
 	
 	Show.RatingsItemView = Backbone.Marionette.ItemView.extend({
 		template: 'items/rating',
-		className: 'genres',
+		className: 'rating',
 		tagName: 'li',
 
 		events: {
-			'click .genre-item': 'genreClicked'
+			'click .rating-item': 'ratingClicked'
 		},
 		
 		initialize: function() {
 		   var that = this;
 		   this.model.on("change:selected", function() {
               that.render();
-              that.trigger('genre:selected', that);
+              that.trigger('rating:selected', that);
 	      });	
 		},
 		
-		genreClicked: function(e) {
-			e.preventDefault();
-
+		ratingClicked: function(e) {
 			this.model.toggle();
 		},
 		

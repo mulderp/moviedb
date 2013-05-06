@@ -1,3 +1,5 @@
-<a href="#genre/{{ name }}" class="genre-item {{#if selected}}selected{{/if}}" data-genre="{{ name }}">
- {{ rating }}
-</a>
+<div class="rating-item {{#if selected}}selected{{/if}}">
+<input type="checkbox" data-ratings="{{ name }}">
+ {{ rating }} and more
+</input>
+</div>

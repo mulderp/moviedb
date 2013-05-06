@@ -15,7 +15,6 @@ class Api::MoviesController < ApplicationController
 
   def search
     movies = Movie.search(params[:q])
-    logger.info movies.to_json
     render :json => movies.to_json
   end
 end
