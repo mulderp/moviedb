@@ -19,7 +19,7 @@ class Movie < ActiveRecord::Base
 
   def self.search(params)
     tire.search(:page => params[:page], :per_page => 10) do |s|
-      s.query { string params[:query], default_operator: "AND" } if params[:query].present?
+      s.query { string params[:q], default_operator: "AND" } if params[:query].present?
       s.filter :range, :rating => { :from => 2}
       s.facet "categories" do
         terms :category_id
