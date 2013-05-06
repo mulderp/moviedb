@@ -7,7 +7,7 @@ MA.module("Manager", {
     var Router = Backbone.Router.extend({
       routes: {
         "": "showDefault",
-        "add": "showAdd",
+        "/mymovies/new": "showAdd",
         "other": "showOther"
       },
 
@@ -29,11 +29,6 @@ MA.module("Manager", {
 
     });
 
-    // Initializer
-    // -----------
-    //
-    // The router must always be alive with the app, so that it can
-    // respond to route changes and start up the right sub-app
     MA.addInitializer(function(){
       var router = new Router();
     });
