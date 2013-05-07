@@ -30,9 +30,9 @@ MA.module('Header.Show', function(Show, App, Backbone, Marionette, $, _) {
 		},
 
 		showNewMovie: function(ev) {
-			ev.preventDefault();
-			var item = $(ev.currentTarget).data('content');
-			this.trigger('manager:start', item);
+			//ev.preventDefault();
+			//var item = $(ev.currentTarget).data('content');
+			//this.trigger('manager:start', item);
 		},
 
 		onRender: function() {
